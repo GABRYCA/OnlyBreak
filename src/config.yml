@@ -1,0 +1,18 @@
+message:
+  warn-perm: "Non sei di un RANK abbastanza alto per rompere questo blocco oppure non hai il permesso"
+
+permissions:
+  coalore: "break.coalore"
+  ironore: "break.ironore"
+  redstoneore: "break.redstoneore"
+  lapisore: "break.lapisore"
+  goldore: "break.goldore"
+  diamondore: "break.diamondore"
+  emeraldore: "break.emeraldore"
+  coalblock: "break.coalblock"
+  ironblock: "break.ironblock"
+  redstoneblock: "break.redstoneblock"
+  lapisblock: "break.lapisblock"
+  goldblock: "break.goldblock"
+  diamondblock: "break.diamondblock"
+  emeraldblock: "break.emeraldblock"
