@@ -6,17 +6,18 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
-    public static Main plugin;
+    public static Main config;
 
-    public static Main getInstance() {
-        return plugin;
+    public static Main getInstance(){
+        return config;
     }
 
     @Override
     public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(new Onbreak(), this);
+        Bukkit.getPluginManager().registerEvents(new OnBreak(),this);
         System.out.println(ChatColor.GREEN + "[OnlyBreak] Plugin abilitato con successo.");
         this.saveDefaultConfig();
+        config = this;
     }
 
     @Override
