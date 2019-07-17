@@ -20,7 +20,7 @@ public class OnBreak implements Listener {
         int x = 0;
         List<String> block = Main.getInstance().getConfig().getStringList("blocks");
         String[] blocks = block.toArray(new String[0]);
-        List<String> permission = Main.getInstance().getConfig().getStringList("permissions2");
+        List<String> permission = Main.getInstance().getConfig().getStringList("permissions");
         String[] permissions = permission.toArray(new String[0]);
         int y = Array.getLength(blocks);
         while(x < y){
