@@ -1,5 +1,9 @@
 message:
-  warn-perm: "Non sei di un RANK abbastanza alto per rompere questo blocco oppure non hai il permesso"
+  warn-perm-block: "Non sei di un RANK abbastanza alto per rompere questo blocco oppure non hai il permesso"
+  warn-perm: "Non hai il permesso per eseguire questo comando"
+  warn-format: "Format non corretto, utilizzare /addblock <BLOCK_NAME> <break.permission>, ad esempio /addblock COAL_ORE break.coalore"
+  warn-format-remove: "Format non corretto, utilizzare /removeblock <BLOCK_NAME> <break.permission>, ad esempio /removeblock COAL_BLOCK break.coalore"
+  command-correct: "Comando eseguito correttamente"
 
 permissions:
   - "break.coalore"
@@ -32,3 +36,6 @@ blocks:
   - "GOLD_BLOCK"
   - "DIAMOND_BLOCK"
   - "EMERALD_BLOCK"
+
+AddBlockPermission: "onlybreak.addblock"
+RemoveBlockPermission: "onlybreak.removeblock"

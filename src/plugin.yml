@@ -1,5 +1,12 @@
 name: OnlyBreak
-version: 0.8.1
+version: 0.9.1
 author: GABRYCA
 main: it.gabryca.onlybreak.Main
 website: https://www.gabryca.tk
+commands:
+  AddBlock:
+    description: Add a block to the config blocks list and a permission
+    usage: /<command> <Block_Name> <break.Permission>
+  RemoveBlock:
+    description: Remove a block from the block list and the permission
+    usage: /<command> <Block_Name> <break.Permission>

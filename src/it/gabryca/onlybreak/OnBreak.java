@@ -27,7 +27,7 @@ public class OnBreak implements Listener {
             if (e.getBlock().getType() == Material.valueOf(blocks[x])) {
                 if (!p.hasPermission(permissions[x]) && e.getBlock().getType() == Material.valueOf(blocks[x])) {
                     e.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-perm"));
+                    p.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-perm-block"));
                 }
             }
         x++;
