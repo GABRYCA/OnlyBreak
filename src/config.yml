@@ -37,5 +37,9 @@ blocks:
   - "DIAMOND_BLOCK"
   - "EMERALD_BLOCK"
 
+Block: "Blocchi"
+Permission: "Permessi"
+
 AddBlockPermission: "onlybreak.addblock"
 RemoveBlockPermission: "onlybreak.removeblock"
+BlockListPermission: "onlybreak.blocklist"

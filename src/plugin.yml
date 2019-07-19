@@ -7,6 +7,6 @@ commands:
   AddBlock:
     description: Add a block to the config blocks list and a permission
     usage: /<command> <Block_Name> <break.Permission>
-  RemoveBlock:
-    description: Remove a block from the block list and the permission
-    usage: /<command> <Block_Name> <break.Permission>
+  BlockList:
+    description: Give a list of blocks and permissions in the chat
+    usage: /<command>

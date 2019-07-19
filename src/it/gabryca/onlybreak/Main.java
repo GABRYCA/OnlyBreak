@@ -16,7 +16,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(new OnBreak(),this);
         getCommand("AddBlock").setExecutor(new AddBlock());
-        getCommand("RemoveBlock").setExecutor(new RemoveBlock());
+        getCommand("BlockList").setExecutor(new BlockList());
         System.out.println(ChatColor.GREEN + "[OnlyBreak] Plugin abilitato con successo.");
         this.saveDefaultConfig();
         config = this;
