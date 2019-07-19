@@ -17,6 +17,18 @@ import java.util.List;
 public class OnBreak implements Listener {
 
     @EventHandler
+    public void onClick(InventoryClickEvent e){
+
+        if (e.getCurrentItem() == null)
+            return;
+
+        if (e.getClickedInventory().getTitle().equals("§7Blocchi")){
+            e.setCancelled(true);
+        }
+
+    }
+
+    @EventHandler
     public void OnBreak2(BlockBreakEvent e){
         Player p = e.getPlayer();
         int x = 0;

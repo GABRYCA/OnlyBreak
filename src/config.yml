@@ -4,6 +4,7 @@ message:
   warn-format: "Format non corretto, utilizzare /addblock <BLOCK_NAME> <break.permission>, ad esempio /addblock COAL_ORE break.coalore"
   warn-format-remove: "Format non corretto, utilizzare /removeblock <BLOCK_NAME> <break.permission>, ad esempio /removeblock COAL_BLOCK break.coalore"
   command-correct: "Comando eseguito correttamente"
+  warn-NotAPlayer: "Non sei un player!"
 
 permissions:
   - "break.coalore"
@@ -37,9 +38,10 @@ blocks:
   - "DIAMOND_BLOCK"
   - "EMERALD_BLOCK"
 
-Block: "Blocchi"
-Permission: "Permessi"
+Block: "Blocco"
+Permission: "Permesso"
 
 AddBlockPermission: "onlybreak.addblock"
 RemoveBlockPermission: "onlybreak.removeblock"
 BlockListPermission: "onlybreak.blocklist"
+BlockGUIPermission: "onlybreak.blockgui"
