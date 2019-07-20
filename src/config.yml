@@ -5,6 +5,7 @@ message:
   warn-format-remove: "Format non corretto, utilizzare /removeblock <BLOCK_NAME> <break.permission>, ad esempio /removeblock COAL_BLOCK break.coalore"
   command-correct: "Comando eseguito correttamente"
   warn-NotAPlayer: "Non sei un player!"
+  warn-NotMaterial: "Non è un materiale esistente"
 
 permissions:
   - "break.coalore"
