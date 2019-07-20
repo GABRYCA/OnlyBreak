@@ -1,12 +1,12 @@
 message:
-  warn-perm-block: "Non sei di un RANK abbastanza alto per rompere questo blocco oppure non hai il permesso"
-  warn-perm: "Non hai il permesso per eseguire questo comando"
-  warn-format: "Format non corretto, utilizzare /addblock <BLOCK_NAME> <break.permission>, ad esempio /addblock COAL_ORE break.coalore"
-  warn-format-remove: "Format non corretto, utilizzare /removeblock <BLOCK_NAME> <break.permission>, ad esempio /removeblock COAL_BLOCK break.coalore"
-  command-correct: "Comando eseguito correttamente"
-  warn-NotAPlayer: "Non sei un player!"
-  warn-NotMaterial: "Non è un materiale esistente"
-  warn-NotMaterialAdvice: "Controllare il config e rimuovere il blocco"
+  warn-perm-block: "You need to be of an higher rank or you don't have the permission"
+  warn-perm: "You don't have the permissions to do this command"
+  warn-format: "Invalid format, use /addblock <BLOCK_NAME> <break.permission>, for example /addblock COAL_ORE break.coalore"
+  warn-format-remove: "Invalid format, use /removeblock <BLOCK_NAME> <break.permission>, for example /removeblock COAL_BLOCK break.coalore"
+  command-correct: "Command executed with success!"
+  warn-NotAPlayer: "You aren't a player!"
+  warn-NotMaterial: "That material doesn't exist"
+  warn-NotMaterialAdvice: "Check the config and remove the block"
   NotValidBlockID: "BARRIER"
 
 permissions:
@@ -41,8 +41,8 @@ blocks:
   - "DIAMOND_BLOCK"
   - "EMERALD_BLOCK"
 
-Block: "Blocco"
-Permission: "Permesso"
+Block: "Block"
+Permission: "Permission"
 
 AddBlockPermission: "onlybreak.addblock"
 RemoveBlockPermission: "onlybreak.removeblock"
