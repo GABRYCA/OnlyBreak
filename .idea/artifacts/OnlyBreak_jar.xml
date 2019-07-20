@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/../../server test per i plugins/plugins</output-path>
     <root id="archive" name="OnlyBreak.jar">
       <element id="module-output" name="OnlyBreak" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/spigot-api-1.12.2-R0.1-20180712.012057-156.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

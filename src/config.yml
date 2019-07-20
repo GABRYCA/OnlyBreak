@@ -8,22 +8,7 @@ message:
   warn-NotMaterial: "That material doesn't exist"
   warn-NotMaterialAdvice: "Check the config and remove the block"
   NotValidBlockID: "BARRIER"
-
-permissions:
-  - "break.coalore"
-  - "break.ironore"
-  - "break.redstoneore"
-  - "break.lapisore"
-  - "break.goldore"
-  - "break.diamondore"
-  - "break.emeraldore"
-  - "break.coalblock"
-  - "break.ironblock"
-  - "break.redstoneblock"
-  - "break.lapisblock"
-  - "break.goldblock"
-  - "break.diamondblock"
-  - "break.emeraldblock"
+  PermissionsBlocksDismatch: "The number of permissions and blocks in the config aren't the same, please fix it soon as possible or nothing will work! Please notice a staff member"
 
 blocks:
   - "COAL_ORE"
@@ -40,6 +25,22 @@ blocks:
   - "GOLD_BLOCK"
   - "DIAMOND_BLOCK"
   - "EMERALD_BLOCK"
+
+permissions:
+  - "break.coalore"
+  - "break.ironore"
+  - "break.redstoneore"
+  - "break.lapisore"
+  - "break.goldore"
+  - "break.diamondore"
+  - "break.emeraldore"
+  - "break.coalblock"
+  - "break.ironblock"
+  - "break.redstoneblock"
+  - "break.lapisblock"
+  - "break.goldblock"
+  - "break.diamondblock"
+  - "break.emeraldblock"
 
 Block: "Block"
 Permission: "Permission"

@@ -20,6 +20,7 @@ public class GUI {
     String NotValidBlockID = Main.getInstance().getConfig().getString("message.NotValidBlockID");
     int x = 0;
     int y = Array.getLength(blocks);
+    int dimension = 0;
 
     private Player p;
 
@@ -40,7 +41,11 @@ public class GUI {
 
     public void open() {
 
-        Inventory inv = Bukkit.createInventory(null,27,"§7Blocchi");
+        while (dimension < y + 8) {
+            dimension = dimension + 9;
+        }
+
+        Inventory inv = Bukkit.createInventory(null,dimension,"§7Blocchi");
 
         while (x < y) {
             if(!(Material.getMaterial(blocks[x]) == null)) {

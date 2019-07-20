@@ -37,11 +37,18 @@ public class OnBreak implements Listener {
         List<String> permission = Main.getInstance().getConfig().getStringList("permissions");
         String[] permissions = permission.toArray(new String[0]);
         int y = Array.getLength(blocks);
+        int perm = Array.getLength(permissions);
         while(x < y){
             if (e.getBlock().getType() == Material.valueOf(blocks[x])) {
                 if (!p.hasPermission(permissions[x]) && e.getBlock().getType() == Material.valueOf(blocks[x])) {
-                    e.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-perm-block"));
+                    if (y == perm) {
+                        e.setCancelled(true);
+                        p.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-perm-block"));
+                    } else {
+                        p.sendMessage("§c" + Main.getInstance().getConfig().getString("message.PermissionsBlocksDismatch") + " [ " + y + " , " + perm + " ]");
+                        p.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-perm-block"));
+                        e.setCancelled(true);
+                    }
                 }
             }
         x++;
