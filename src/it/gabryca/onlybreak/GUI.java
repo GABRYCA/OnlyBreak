@@ -17,6 +17,7 @@ public class GUI {
     String[] blocks = block.toArray(new String[0]);
     List<String> permission = Main.getInstance().getConfig().getStringList("permissions");
     String[] permissions = permission.toArray(new String[0]);
+    String NotValidBlockID = Main.getInstance().getConfig().getString("message.NotValidBlockID");
     int x = 0;
     int y = Array.getLength(blocks);
 
@@ -42,11 +43,18 @@ public class GUI {
         Inventory inv = Bukkit.createInventory(null,27,"§7Blocchi");
 
         while (x < y) {
-            List<String> lore = new ArrayList<String>();
-            lore.add("§2" + Main.getInstance().getConfig().getString("Block") + ": §7" + blocks[x]);
-            lore.add("§2" + Main.getInstance().getConfig().getString("Permission") + ": §c" + permissions[x]);
-            inv.addItem(createButton(Material.valueOf(String.valueOf(blocks[x])), 1, lore, "§6" + blocks[x]));
-            x++;
+            if(!(Material.getMaterial(blocks[x]) == null)) {
+                List<String> lore = new ArrayList<String>();
+                lore.add("§2" + Main.getInstance().getConfig().getString("Block") + ": §7" + blocks[x]);
+                lore.add("§2" + Main.getInstance().getConfig().getString("Permission") + ": §c" + permissions[x]);
+                inv.addItem(createButton(Material.valueOf(String.valueOf(blocks[x])), 1, lore, "§6" + blocks[x]));
+            } else {
+                List<String> lore = new ArrayList<String>();
+                lore.add("§c" + Main.getInstance().getConfig().getString("message.warn-NotMaterialAdvice"));
+                lore.add("§c[ " + blocks[x] + " , " + permissions[x] + " ]" );
+                inv.addItem(createButton(Material.valueOf(NotValidBlockID), 1, lore, "§c" + Main.getInstance().getConfig().getString("message.warn-NotMaterial")));
+            }
+        x++;
         }
 
         this.p.openInventory(inv);

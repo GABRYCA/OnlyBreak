@@ -6,6 +6,8 @@ message:
   command-correct: "Comando eseguito correttamente"
   warn-NotAPlayer: "Non sei un player!"
   warn-NotMaterial: "Non è un materiale esistente"
+  warn-NotMaterialAdvice: "Controllare il config e rimuovere il blocco"
+  NotValidBlockID: "BARRIER"
 
 permissions:
   - "break.coalore"
