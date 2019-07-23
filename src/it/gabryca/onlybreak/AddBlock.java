@@ -24,6 +24,8 @@ public class AddBlock implements CommandExecutor {
         List<String> permissions = Main.getInstance().getConfig().getStringList("permissions");
         String[] block = blocks.toArray(new String[0]);
         String[] permission = permissions.toArray(new String[0]);
+        int found = 0;
+        int z = 0;
         int x = Array.getLength(block);
         int y = Array.getLength(permission);
 
@@ -31,12 +33,22 @@ public class AddBlock implements CommandExecutor {
             if (strings.length == 2) {
                 if(!(Material.getMaterial(strings[0]) == null)) {
                     if (x == y) {
-                        commandSender.sendMessage(ChatColor.GREEN + Main.getInstance().getConfig().getString("message.command-correct") + " [ " + strings[0] + " , " + strings[1] + " ]");
-                        blocks.add(strings[0]);
-                        Main.getInstance().getConfig().set("blocks", blocks);
-                        permissions.add(strings[1]);
-                        Main.getInstance().getConfig().set("permissions", permissions);
-                        Main.getInstance().saveConfig();
+                        while(z < x) {
+                            if (strings[0].equals(block[z]) || strings[0].equals(permission[z]) || strings[1].equals(block[z]) || strings[1].equals(permission[z])){
+                                found++;
+                            }
+                            z++;
+                        }
+                            if (found == 0) {
+                                commandSender.sendMessage(ChatColor.GREEN + Main.getInstance().getConfig().getString("message.command-correct") + " [ " + strings[0] + " , " + strings[1] + " ]");
+                                blocks.add(strings[0]);
+                                Main.getInstance().getConfig().set("blocks", blocks);
+                                permissions.add(strings[1]);
+                                Main.getInstance().getConfig().set("permissions", permissions);
+                                Main.getInstance().saveConfig();
+                            } else {
+                                commandSender.sendMessage("§c" + Main.getInstance().getConfig().getString("message.warn-AlreadyAddedBlock"));
+                            }
                     } else {
                         commandSender.sendMessage("§c" + Main.getInstance().getConfig().getString("message.PermissionsBlocksDismatch") + " [ " + x + " , " + y + " ]");
                     }
