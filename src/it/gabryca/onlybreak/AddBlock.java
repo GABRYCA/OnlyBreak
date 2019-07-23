@@ -47,13 +47,13 @@ public class AddBlock implements CommandExecutor {
                                 Main.getInstance().getConfig().set("permissions", permissions);
                                 Main.getInstance().saveConfig();
                             } else {
-                                commandSender.sendMessage("§c" + Main.getInstance().getConfig().getString("message.warn-AlreadyAddedBlock"));
+                                commandSender.sendMessage("§c" + Main.getInstance().getConfig().getString("message.warn-AlreadyAddedBlock") + " [ " + strings[0] + " , " + strings[1] +  " ]");
                             }
                     } else {
                         commandSender.sendMessage("§c" + Main.getInstance().getConfig().getString("message.PermissionsBlocksDismatch") + " [ " + x + " , " + y + " ]");
                     }
                 } else {
-                    commandSender.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-NotMaterial") + " [ " +strings[0] + " ]");
+                    commandSender.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-NotMaterial") + " [ " + strings[0] + " ]");
                 }
             } else {
                 commandSender.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-format"));
