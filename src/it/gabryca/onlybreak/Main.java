@@ -18,7 +18,7 @@ public class Main extends JavaPlugin {
         getCommand("AddBlock").setExecutor(new AddBlock());
         getCommand("BlockList").setExecutor(new BlockList());
         getCommand("BlockGUI").setExecutor(new BlockGUI());
-        System.out.println(ChatColor.GREEN + "[OnlyBreak] Plugin abilitato con successo.");
+        System.out.println(ChatColor.GREEN + "[OnlyBreak] Plugin enabled with success.");
         this.saveDefaultConfig();
         config = this;
         this.saveConfig();
@@ -26,7 +26,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        System.out.println(ChatColor.RED + "[OnlyBreak] Plugin disabilitato con successo.");
+        System.out.println(ChatColor.RED + "[OnlyBreak] Plugin disabled with success.");
     }
 
 }

@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.Configuration;
 
 import java.lang.reflect.Array;
 import java.util.List;
@@ -13,21 +14,23 @@ public class BlockList implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
-        List<String> blocks = Main.getInstance().getConfig().getStringList("blocks");
-        List<String> permissions = Main.getInstance().getConfig().getStringList("permissions");
+        Configuration config = Main.getInstance().getConfig();
+
+        List<String> blocks = config.getStringList("blocks");
+        List<String> permissions = config.getStringList("permissions");
         String[] block = blocks.toArray(new String[0]);
         String[] permission = permissions.toArray(new String[0]);
         int x = Array.getLength(block);
         int y = Array.getLength(permission);
 
-        if (commandSender.hasPermission(Main.getInstance().getConfig().getString("BlockListPermission"))){
+        if (commandSender.hasPermission(config.getString("BlockListPermission"))){
             if (x == y) {
-                commandSender.sendMessage(ChatColor.DARK_GRAY + Main.getInstance().getConfig().getString("Block") + " [ " + Main.getInstance().getConfig().getStringList("blocks") + " ] " + ChatColor.GRAY + Main.getInstance().getConfig().getString("Permission") + " [ " + Main.getInstance().getConfig().getStringList("permissions") + " ]");
+                commandSender.sendMessage(ChatColor.DARK_GRAY + config.getString("Block") + " [ " + config.getStringList("blocks") + " ] " + ChatColor.GRAY + config.getString("Permission") + " [ " + config.getStringList("permissions") + " ]");
             }else{
-                commandSender.sendMessage("§c" + Main.getInstance().getConfig().getString("message.PermissionsBlocksDismatch") + " [ " + x + " , " + y + " ]");
+                commandSender.sendMessage("§c" + config.getString("message.PermissionsBlocksDismatch") + " [ " + x + " , " + y + " ]");
             }
             }else{
-            commandSender.sendMessage(ChatColor.RED + Main.getInstance().getConfig().getString("message.warn-perm") + " [ " + Main.getInstance().getConfig().getString("BlockListPermission") + " ]");
+            commandSender.sendMessage(ChatColor.RED + config.getString("message.warn-perm") + " [ " + Main.getInstance().getConfig().getString("BlockListPermission") + " ]");
         }
 
         return true;
