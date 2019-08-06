@@ -1,5 +1,6 @@
 package it.gabryca.onlybreak;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -9,11 +10,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
+import sun.jvm.hotspot.opto.Block;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class OnBreak implements Listener {
     @EventHandler
@@ -22,37 +26,24 @@ public class OnBreak implements Listener {
         if (e.getCurrentItem() == null)
             return;
 
-        if (e.getClickedInventory().getTitle().equals("§7Blocchi")){
+        if (e.getClickedInventory().getTitle().equals("§7Blocks")){
             e.setCancelled(true);
         }
 
     }
 
     @EventHandler
-    public void OnBreak2(BlockBreakEvent e){
+    public void OnBreak2(BlockBreakEvent e) {
+        Material block = Material.valueOf(String.valueOf(e.getBlock().getType()));
         Configuration config = Main.getInstance().getConfig();
         Player p = e.getPlayer();
-        int x = 0;
-        List<String> block = config.getStringList("blocks");
-        String[] blocks = block.toArray(new String[0]);
-        List<String> permission = config.getStringList("permissions");
-        String[] permissions = permission.toArray(new String[0]);
-        int y = Array.getLength(blocks);
-        int perm = Array.getLength(permissions);
-        while(x < y){
-            if (e.getBlock().getType() == Material.valueOf(blocks[x])) {
-                if (!p.hasPermission(permissions[x]) && e.getBlock().getType() == Material.valueOf(blocks[x])) {
-                    if (y == perm) {
-                        e.setCancelled(true);
-                        p.sendMessage(ChatColor.RED + config.getString("message.warn-perm-block"));
-                    } else {
-                        p.sendMessage("§c" + config.getString("message.PermissionsBlocksDismatch") + " [ " + y + " , " + perm + " ]");
-                        p.sendMessage(ChatColor.RED + config.getString("message.warn-perm-block"));
-                        e.setCancelled(true);
-                    }
+        if (!(config.getString("blocks." + block) == null)) {
+            if (!(config.getString("blocks." + block + ".block") == null)) {
+                if (!(p.hasPermission(config.getString("blocks." + block + ".permission")))) {
+                    e.setCancelled(true);
+                    p.sendMessage(ChatColor.RED + config.getString("message.warn-perm-block"));
                 }
             }
-        x++;
         }
     }
 }

@@ -1,8 +1,9 @@
 name: OnlyBreak
-version: 1.2.0
+version: 1.3.0
 author: GABRYCA
 main: it.gabryca.onlybreak.Main
 website: https://www.gabryca.tk
+api-version: 1.13
 commands:
   AddBlock:
     description: Add a block to the config blocks list and a permission
@@ -13,3 +14,6 @@ commands:
   BlockGUI:
     description: Open a GUI with a list of the blocks and their permissions
     usage: /<command>
+  DelBlock:
+    description: Remove a block from the config
+    usage: /<command> <Block_Name>

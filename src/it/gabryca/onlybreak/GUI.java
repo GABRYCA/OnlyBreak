@@ -11,17 +11,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class GUI {
 
     Configuration config = Main.getInstance().getConfig();
-    List<String> block = config.getStringList("blocks");
-    String[] blocks = block.toArray(new String[0]);
-    List<String> permission = config.getStringList("permissions");
-    String[] permissions = permission.toArray(new String[0]);
     String NotValidBlockID = config.getString("message.NotValidBlockID");
-    int x = 0;
-    int y = Array.getLength(blocks);
     int dimension = 0;
 
     private Player p;
@@ -43,25 +38,24 @@ public class GUI {
 
     public void open() {
 
-        while (dimension < y + 8) {
+        Set<String> shops = config.getConfigurationSection("blocks").getKeys(false);
+        int num = shops.size();
+        while (dimension < num + 8) {
             dimension = dimension + 9;
         }
-
-        Inventory inv = Bukkit.createInventory(null,dimension,"§7Blocchi");
-
-        while (x < y) {
-            if(!(Material.getMaterial(blocks[x]) == null)) {
+        Inventory inv = Bukkit.createInventory(null,dimension,"§7Blocks");
+        for (String key : shops) {
+            if (!(Material.getMaterial(config.getString("blocks." + key + ".block")) == null)) {
                 List<String> lore = new ArrayList<String>();
-                lore.add("§2" + config.getString("Block") + ": §7" + blocks[x]);
-                lore.add("§2" + config.getString("Permission") + ": §c" + permissions[x]);
-                inv.addItem(createButton(Material.valueOf(String.valueOf(blocks[x])), 1, lore, "§6" + blocks[x]));
+                lore.add("§2" + config.getString("Block") + ": §7" + config.getString("blocks." + key + ".block"));
+                lore.add("§2" + config.getString("Permission") + ": §c" + config.getString("blocks." + key + ".permission"));
+                inv.addItem(createButton(Material.valueOf(String.valueOf(config.getString("blocks." + key + ".block"))), 1, lore, "§6" + config.getString("blocks." + key + ".block")));
             } else {
                 List<String> lore = new ArrayList<String>();
-                lore.add("§c" + config.getString("message.warn-NotMaterialAdvice"));
-                lore.add("§c[ " + blocks[x] + " , " + permissions[x] + " ]" );
+                lore.add("§2" + config.getString("Block") + ": §7" + config.getString("blocks." + key + ".block"));
+                lore.add("§2" + config.getString("Permission") + ": §c" + config.getString("blocks." + key + ".permission"));
                 inv.addItem(createButton(Material.valueOf(NotValidBlockID), 1, lore, "§c" + config.getString("message.warn-NotMaterial")));
             }
-        x++;
         }
 
         this.p.openInventory(inv);
