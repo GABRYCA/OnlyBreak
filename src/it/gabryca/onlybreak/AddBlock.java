@@ -6,14 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.file.FileConfiguration;
-
-import java.io.File;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class AddBlock implements CommandExecutor {
 
@@ -25,10 +17,17 @@ public class AddBlock implements CommandExecutor {
         if (commandSender.hasPermission(config.getString("AddBlockPermission"))) {
             if (strings.length == 2) {
                 if(!(Material.getMaterial(strings[0]) == null)) {
-                    config.set("blocks." + strings[0] + ".block", strings[0]);
-                    config.set("blocks." + strings[0] + ".permission", strings[1]);
-                    Main.getInstance().saveConfig();
-                    commandSender.sendMessage("§a" + config.get("message.command-correct"));
+                    if(config.getString("blocks." + strings[0] + ".block") == null) {
+                        config.set("blocks." + strings[0] + ".block", strings[0]);
+                        config.set("blocks." + strings[0] + ".permission", strings[1]);
+                        Main.getInstance().saveConfig();
+                        commandSender.sendMessage("§a" + config.get("message.command-correct"));
+                    } else {
+                        config.set("blocks." + strings[0] + ".block", strings[0]);
+                        config.set("blocks." + strings[0] + ".permission", strings[1]);
+                        Main.getInstance().saveConfig();
+                        commandSender.sendMessage("§a" + config.get("message.block-changed"));
+                    }
                 } else {
                     commandSender.sendMessage(ChatColor.RED + config.getString("message.warn-NotMaterial") + " [ " + strings[0] + " ]");
                 }
