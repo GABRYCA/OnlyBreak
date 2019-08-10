@@ -19,6 +19,7 @@ public class Main extends JavaPlugin {
         getCommand("BlockList").setExecutor(new BlockList());
         getCommand("BlockGUI").setExecutor(new BlockGUI());
         getCommand("DelBlock").setExecutor(new DelBlock());
+        getCommand("MyBlocks").setExecutor(new MyBlocks());
         System.out.println(ChatColor.GREEN + "[OnlyBreak] Plugin enabled with success.");
         this.saveDefaultConfig();
         config = this;

@@ -1,5 +1,5 @@
 name: OnlyBreak
-version: 1.3.2
+version: 1.3.3
 author: GABRYCA
 main: it.gabryca.onlybreak.Main
 website: https://www.gabryca.tk
@@ -17,3 +17,6 @@ commands:
   DelBlock:
     description: Remove a block from the config
     usage: /<command> <Block_Name>
+  MyBlocks:
+    description: See which blocks you can break in a GUI
+    usage: /<command>
