@@ -13,6 +13,7 @@ public class DelBlock implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         Configuration config = Main.getInstance().getConfig();
+        Configuration message = Main.getMessages();
 
         if (commandSender.hasPermission(config.getString("RemoveBlockPermission"))){
             if (strings.length == 1){
@@ -22,18 +23,18 @@ public class DelBlock implements CommandExecutor {
                         config.set("blocks." + strings[0] + ".permission", null);
                         config.set("blocks." + strings[0], null);
                         Main.getInstance().saveConfig();
-                        commandSender.sendMessage("§a" + config.get("message.command-correct"));
+                        commandSender.sendMessage("§a" + message.get("message.command-correct"));
                     } else {
-                        commandSender.sendMessage(ChatColor.RED + config.getString("message.NoBlocks"));
+                        commandSender.sendMessage(ChatColor.RED + message.getString("message.NoBlocks"));
                     }
                 } else {
-                    commandSender.sendMessage(ChatColor.RED + config.getString("message.warn-NotMaterial") + " [ " + strings[0] + " ]");
+                    commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-NotMaterial") + " [ " + strings[0] + " ]");
                 }
             } else {
-                commandSender.sendMessage(ChatColor.RED + config.getString("message.warn-format-delblock"));
+                commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-format-delblock"));
             }
         } else {
-            commandSender.sendMessage(ChatColor.RED + config.getString("message.warn-perm") + " [" + config.getString("RemoveBlockPermission") + "]");
+            commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-perm") + " [" + config.getString("RemoveBlockPermission") + "]");
         }
         return true;
     }

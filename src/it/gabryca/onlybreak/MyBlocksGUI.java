@@ -15,7 +15,8 @@ import java.util.Set;
 public class MyBlocksGUI {
 
     Configuration config = Main.getInstance().getConfig();
-    String NotValidBlockID = config.getString("message.NotValidBlockID");
+    Configuration message = Main.getMessages();
+    String NotValidBlockID = message.getString("message.NotValidBlockID");
     int dimension = 0;
 
     private Player p;
@@ -52,7 +53,7 @@ public class MyBlocksGUI {
                 } else {
                     List<String> lore = new ArrayList<String>();
                     lore.add("§2" + config.getString("Block") + ": §7" + config.getString("blocks." + key + ".block"));
-                    inv.addItem(createButton(Material.valueOf(NotValidBlockID), 1, lore, "§c" + config.getString("message.warn-NotMaterial")));
+                    inv.addItem(createButton(Material.valueOf(NotValidBlockID), 1, lore, "§c" + message.getString("message.warn-NotMaterial")));
                 }
             }
         }

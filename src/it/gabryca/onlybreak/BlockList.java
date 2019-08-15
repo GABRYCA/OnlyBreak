@@ -14,6 +14,7 @@ public class BlockList implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         Configuration config = Main.getInstance().getConfig();
+        Configuration message = Main.getMessages();
 
         if (commandSender.hasPermission(config.getString("BlockListPermission"))){
             Set<String> blocks = config.getConfigurationSection("blocks").getKeys(false);
@@ -22,7 +23,7 @@ public class BlockList implements CommandExecutor {
                 commandSender.sendMessage("§7— " + "§c" + config.getString("Permission") + ": " + config.getString("blocks." + key + ".permission"));
             }
             }else{
-            commandSender.sendMessage(ChatColor.RED + config.getString("message.warn-perm") + " [ " + Main.getInstance().getConfig().getString("BlockListPermission") + " ]");
+            commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-perm") + " [ " + Main.getInstance().getConfig().getString("BlockListPermission") + " ]");
         }
         return true;
     }

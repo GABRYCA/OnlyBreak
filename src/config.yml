@@ -1,16 +1,3 @@
-message:
-  warn-perm-block: "You need to be of an higher rank or you don't have the permission"
-  warn-perm: "You don't have the permissions to do this command"
-  warn-format: "Invalid format, use /addblock <BLOCK_NAME> <break.permission>, for example /addblock COAL_ORE break.coalore"
-  warn-format-delblock: "Invalid format, please use /delblock <Block_Name>, for example /delblock COAL_ORE"
-  command-correct: "Command executed with success!"
-  block-changed: "Block changed with success"
-  warn-NotAPlayer: "You aren't a player!"
-  warn-NotMaterial: "That material doesn't exist"
-  warn-NotMaterialAdvice: "Check the config and remove the block"
-  NotValidBlockID: "BARRIER"
-  NoBlocks: "That block isn't in the config"
-
 Block: "Block"
 Permission: "Permission"
 
