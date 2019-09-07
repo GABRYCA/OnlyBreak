@@ -1,5 +1,5 @@
 name: OnlyBreak
-version: 1.3.4
+version: 1.4.0
 author: GABRYCA
 main: it.gabryca.onlybreak.Main
 website: https://www.gabryca.tk
@@ -19,4 +19,7 @@ commands:
     usage: /<command> <Block_Name>
   MyBlocks:
     description: See which blocks you can break in a GUI
+    usage: /<command>
+  Onlybreak:
+    description: Show all the commands
     usage: /<command>

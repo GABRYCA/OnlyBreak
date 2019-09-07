@@ -1,9 +1,13 @@
 Block: "Block"
 Permission: "Permission"
 
-AddBlockPermission: "onlybreak.addblock"
-RemoveBlockPermission: "onlybreak.removeblock"
-BlockListPermission: "onlybreak.blocklist"
-BlockGUIPermission: "onlybreak.blockgui"
+AddBlockPermission: "Onlybreak.addblock"
+RemoveBlockPermission: "Onlybreak.removeblock"
+BlockListPermission: "Onlybreak.blocklist"
+BlockGUIPermission: "Onlybreak.blockgui"
+OnlyBreak-command-permission: "Onlybreak.Onlybreak"
+MyBlocks-Enabled: true
+MyBlocks-Enable-Permission: false
+MyBlocks-Permission: "Onlybreak.myblocks"
 
 blocks:

@@ -3,12 +3,7 @@ package it.gabryca.onlybreak;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class Main extends JavaPlugin {
 
@@ -26,6 +21,7 @@ public class Main extends JavaPlugin {
         getCommand("BlockGUI").setExecutor(new BlockGUI());
         getCommand("DelBlock").setExecutor(new DelBlock());
         getCommand("MyBlocks").setExecutor(new MyBlocks());
+        getCommand("Onlybreak").setExecutor(new onlybreak());
         System.out.println(ChatColor.GREEN + "[OnlyBreak] Plugin enabled with success.");
         this.saveDefaultConfig();
         config = this;

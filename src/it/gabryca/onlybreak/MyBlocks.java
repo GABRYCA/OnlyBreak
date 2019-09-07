@@ -12,16 +12,33 @@ public class MyBlocks implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         Configuration config = Main.getInstance().getConfig();
+        Configuration message = Main.getMessages();
 
-            if (commandSender instanceof Player) {
-                Player p = (Player) commandSender;
-                MyBlocksGUI gui = new MyBlocksGUI(p);
-                gui.open();
+        if (config.getBoolean("MyBlocks-Enabled")) {
+            if (config.getBoolean("MyBlocks-Enable-Permission")) {
+                if (commandSender.hasPermission(config.getString("MyBlocks-Permission"))) {
+                    if (commandSender instanceof Player) {
+                        Player p = (Player) commandSender;
+                        MyBlocksGUI gui = new MyBlocksGUI(p);
+                        gui.open();
+                    } else {
+                        commandSender.sendMessage("§4" + message.getString("message.warn-NotAPlayer"));
+                    }
+                } else {
+                    commandSender.sendMessage("§4" + message.getString("message.warn-perm") + " §7[§c" + config.getString("MyBlocks-Permission") + "§7]");
+                }
             } else {
-                commandSender.sendMessage("§4" + config.getString("message.warn-NotAPlayer"));
+                if (commandSender instanceof Player) {
+                    Player p = (Player) commandSender;
+                    MyBlocksGUI gui = new MyBlocksGUI(p);
+                    gui.open();
+                } else {
+                    commandSender.sendMessage("§4" + message.getString("message.warn-NotAPlayer"));
+                }
             }
-
-        return true;
-    }
-
+        } else {
+            return true;
+        }
+            return true;
+        }
 }
