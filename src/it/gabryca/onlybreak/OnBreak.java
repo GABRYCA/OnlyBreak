@@ -16,7 +16,7 @@ public class OnBreak implements Listener {
         if (e.getCurrentItem() == null)
             return;
 
-        if (e.getClickedInventory().getTitle().equals("§7Blocks")){
+        if (e.getView().getTitle().equals("§7Blocks")){
             e.setCancelled(true);
         }
 

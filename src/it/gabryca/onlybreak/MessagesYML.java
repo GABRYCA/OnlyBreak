@@ -28,6 +28,7 @@ public class MessagesYML {
                conf.set("message.warn-NotMaterialAdvice", "Check the config and remove the block");
                conf.set("message.NotValidBlockID", "BARRIER");
                conf.set("message.NoBlocks", "That block isn't in the config");
+               conf.set("Message.EmptyGUI", "There aren't blocks added, so the GUI won't be open as it is empty");
                conf.save(file);
            } catch (IOException e) {
                e.printStackTrace();
