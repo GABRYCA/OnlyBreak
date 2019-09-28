@@ -46,17 +46,19 @@ class GUI {
             while (dimension < num + 8) {
                 dimension = dimension + 9;
             }
-            Inventory inv = Bukkit.createInventory(null, dimension, "§7Blocks");
+            Inventory inv = Bukkit.createInventory(null, dimension, "§7Block");
             for (String key : shops) {
                 if (!(Material.getMaterial(config.getString("blocks." + key + ".block")) == null)) {
                     List<String> lore = new ArrayList<String>();
                     lore.add("§2" + config.getString("Block") + ": §7" + config.getString("blocks." + key + ".block"));
                     lore.add("§2" + config.getString("Permission") + ": §c" + config.getString("blocks." + key + ".permission"));
+                    lore.add("§c" + message.getString("Message.RightClickToDelete"));
                     inv.addItem(createButton(Material.valueOf(String.valueOf(config.getString("blocks." + key + ".block"))), 1, lore, "§6" + config.getString("blocks." + key + ".block")));
                 } else {
                     List<String> lore = new ArrayList<String>();
                     lore.add("§2" + config.getString("Block") + ": §7" + config.getString("blocks." + key + ".block"));
                     lore.add("§2" + config.getString("Permission") + ": §c" + config.getString("blocks." + key + ".permission"));
+                    lore.add("§c" + message.getString("Message.RightClickToDelete"));
                     inv.addItem(createButton(Material.valueOf(NotValidBlockID), 1, lore, "§c" + config.getString("message.warn-NotMaterial")));
                 }
             }

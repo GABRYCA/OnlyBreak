@@ -30,6 +30,8 @@ class MessagesYML {
                conf.set("message.NotValidBlockID", "BARRIER");
                conf.set("message.NoBlocks", "That block isn't in the config");
                conf.set("Message.EmptyGUI", "There aren't blocks added, so the GUI won't be open as it is empty");
+               conf.set("Message.BlockDeletedSuccess", "§aBlocks deleted with success");
+               conf.set("Message.RightClickToDelete", "Right click to delete all blocks");
                conf.save(file);
            } catch (IOException e) {
                e.printStackTrace();

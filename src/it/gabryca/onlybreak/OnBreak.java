@@ -16,8 +16,28 @@ public class OnBreak implements Listener {
         if (e.getCurrentItem() == null)
             return;
 
-        if (e.getView().getTitle().equals("§7Blocks")){
-            e.setCancelled(true);
+        if (e.getView().getTitle().equals("§7Block")){
+
+            if (e.getCurrentItem() == null){
+                return;
+            }
+
+            if (!(e.isRightClick())){
+                return;
+            }
+
+            Player p = (Player) e.getWhoClicked();
+            Configuration config = Main.getInstance().getConfig();
+            Configuration message = Main.getMessages();
+            if (e.getCurrentItem().hasItemMeta()){
+                String block = e.getCurrentItem().getItemMeta().getDisplayName().substring(2);
+                config.set("blocks." + block, null);
+                config.set("blocks", null);
+                Main.getInstance().saveConfig();
+                p.closeInventory();
+                p.sendMessage("§a" + message.getString("Message.BlockDeletedSuccess"));
+            }
+
         }
 
     }
@@ -43,5 +63,6 @@ public class OnBreak implements Listener {
 
         e.setCancelled(true);
         p.sendMessage(ChatColor.RED + message.getString("message.warn-perm-block"));
+        return;
     }
 }

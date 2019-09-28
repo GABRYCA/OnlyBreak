@@ -47,7 +47,7 @@ class MyBlocksGUI {
                 dimension = dimension + 9;
             }
 
-            Inventory inv = Bukkit.createInventory(null, dimension, "§7Blocks");
+            Inventory inv = Bukkit.createInventory(null, dimension, "§7MyBlocks");
             for (String key : shops) {
 
                 if (!(p.hasPermission(config.getString("blocks." + key + ".permission")))){
