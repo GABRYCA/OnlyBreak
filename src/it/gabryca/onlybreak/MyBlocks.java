@@ -14,31 +14,38 @@ public class MyBlocks implements CommandExecutor {
         Configuration config = Main.getInstance().getConfig();
         Configuration message = Main.getMessages();
 
-        if (config.getBoolean("MyBlocks-Enabled")) {
-            if (config.getBoolean("MyBlocks-Enable-Permission")) {
-                if (commandSender.hasPermission(config.getString("MyBlocks-Permission"))) {
-                    if (commandSender instanceof Player) {
-                        Player p = (Player) commandSender;
-                        MyBlocksGUI gui = new MyBlocksGUI(p);
-                        gui.open();
-                    } else {
-                        commandSender.sendMessage("§4" + message.getString("message.warn-NotAPlayer"));
-                    }
-                } else {
-                    commandSender.sendMessage("§4" + message.getString("message.warn-perm") + " §7[§c" + config.getString("MyBlocks-Permission") + "§7]");
-                }
-            } else {
-                if (commandSender instanceof Player) {
-                    Player p = (Player) commandSender;
-                    MyBlocksGUI gui = new MyBlocksGUI(p);
-                    gui.open();
-                } else {
-                    commandSender.sendMessage("§4" + message.getString("message.warn-NotAPlayer"));
-                }
-            }
-        } else {
+        if (!(config.getBoolean("MyBlocks-Enabled"))){
+            commandSender.sendMessage("§c" + message.getString("message.warn-disabled"));
             return true;
         }
+
+            if (config.getBoolean("MyBlocks-Enable-Permission")) {
+
+                if (!(commandSender.hasPermission(config.getString("MyBlocks-Permission")))){
+                    commandSender.sendMessage("§4" + message.getString("message.warn-perm") + " §7[§c" + config.getString("MyBlocks-Permission") + "§7]");
+                    return true;
+                }
+
+                if (!(commandSender instanceof Player)){
+                    commandSender.sendMessage("§4" + message.getString("message.warn-NotAPlayer"));
+                    return true;
+                }
+
+                Player p = (Player) commandSender;
+                MyBlocksGUI gui = new MyBlocksGUI(p);
+                gui.open();
+            } else {
+
+                if (!(commandSender instanceof Player)){
+                    commandSender.sendMessage("§4" + message.getString("message.warn-NotAPlayer"));
+                    return true;
+                }
+
+                Player p = (Player) commandSender;
+                MyBlocksGUI gui = new MyBlocksGUI(p);
+                gui.open();
+                return true;
+            }
             return true;
         }
 }

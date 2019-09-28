@@ -6,12 +6,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-public class MessagesYML {
+class MessagesYML {
 
     private File file = new File(Main.getInstance().getDataFolder()+"/messages.yml");
     private FileConfiguration conf;
 
-    public MessagesYML() {
+    MessagesYML() {
        if(!file.exists()){
            try {
                file.createNewFile();
@@ -21,6 +21,7 @@ public class MessagesYML {
                conf.set("message.warn-perm", "You don't have the permissions to do this command");
                conf.set("message.warn-format", "Invalid format, use /addblock <BLOCK_NAME> <break.permission>, for example /addblock COAL_ORE break.coalore");
                conf.set("message.warn-format-delblock", "Invalid format, please use /delblock <Block_Name>, for example /delblock COAL_ORE");
+               conf.set("message.warn-disabled", "This function it's disabled from the config");
                conf.set("message.command-correct", "Command executed with success!");
                conf.set("message.block-changed", "Block changed with success");
                conf.set("message.warn-NotAPlayer", "You aren't a player!");
@@ -38,7 +39,7 @@ public class MessagesYML {
         conf = YamlConfiguration.loadConfiguration(file);
     }
 
-    public FileConfiguration getFile(){
+    FileConfiguration getFile(){
         return conf;
     }
 

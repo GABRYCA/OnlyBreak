@@ -6,7 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public class AddBlock implements CommandExecutor {
 
@@ -16,9 +15,21 @@ public class AddBlock implements CommandExecutor {
         Configuration config = Main.getInstance().getConfig();
         Configuration message = Main.getMessages();
 
-        if (commandSender.hasPermission(config.getString("AddBlockPermission"))) {
-            if (strings.length == 2) {
-                if(!(Material.getMaterial(strings[0]) == null)) {
+        if (!(commandSender.hasPermission(config.getString("AddBlockPermission")))){
+            commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-perm") + " [" + config.getString("AddBlockPermission") + "]");
+            return true;
+        }
+
+        if (!(strings.length == 2)){
+            commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-format"));
+            return true;
+        }
+
+        if (Material.getMaterial(strings[0]) == null){
+            commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-NotMaterial") + " [ " + strings[0] + " ]");
+            return true;
+        }
+
                     if(config.getString("blocks." + strings[0] + ".block") == null) {
                         config.set("blocks." + strings[0] + ".block", strings[0]);
                         config.set("blocks." + strings[0] + ".permission", strings[1]);
@@ -30,15 +41,7 @@ public class AddBlock implements CommandExecutor {
                         Main.getInstance().saveConfig();
                         commandSender.sendMessage("§a" + message.get("message.block-changed"));
                     }
-                } else {
-                    commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-NotMaterial") + " [ " + strings[0] + " ]");
-                }
-            } else {
-                commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-format"));
-            }
-        } else {
-            commandSender.sendMessage(ChatColor.RED + message.getString("message.warn-perm") + " [" + config.getString("AddBlockPermission") + "]");
-        }
+
         return true;
     }
 }

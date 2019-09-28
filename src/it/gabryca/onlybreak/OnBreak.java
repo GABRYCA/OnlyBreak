@@ -28,13 +28,20 @@ public class OnBreak implements Listener {
         Configuration config = Main.getInstance().getConfig();
         Configuration message = Main.getMessages();
         Player p = e.getPlayer();
-        if (!(config.getString("blocks." + block) == null)) {
-            if (!(config.getString("blocks." + block + ".block") == null)) {
-                if (!(p.hasPermission(config.getString("blocks." + block + ".permission")))) {
-                    e.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + message.getString("message.warn-perm-block"));
-                }
-            }
+
+        if (config.getString("blocks." + block) == null){
+            return;
         }
+
+        if (config.getString("blocks." + block + ".block") == null){
+            return;
+        }
+
+        if (p.hasPermission(config.getString("blocks." + block + ".permission"))){
+            return;
+        }
+
+        e.setCancelled(true);
+        p.sendMessage(ChatColor.RED + message.getString("message.warn-perm-block"));
     }
 }

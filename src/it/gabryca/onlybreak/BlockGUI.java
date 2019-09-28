@@ -13,17 +13,19 @@ public class BlockGUI implements CommandExecutor {
 
         Configuration config = Main.getInstance().getConfig();
 
-        if (commandSender.hasPermission(config.getString("BlockGUIPermission"))) {
-            if (commandSender instanceof Player) {
+        if (!(commandSender.hasPermission(config.getString("BlockGUIPermission")))){
+            commandSender.sendMessage("§c" + config.getString("message.warn-perm") + " [ " + config.getString("BlockGUIPermission") + " ]");
+            return true;
+        }
+
+        if (!(commandSender instanceof Player)){
+            commandSender.sendMessage("§4" + config.getString("message.warn-NotAPlayer"));
+            return true;
+        }
+
                     Player p = (Player) commandSender;
                     GUI gui = new GUI(p);
                     gui.open();
-            } else {
-                commandSender.sendMessage("§4" + config.getString("message.warn-NotAPlayer"));
-            }
-        } else {
-            commandSender.sendMessage("§c" + config.getString("message.warn-perm") + " [ " + config.getString("BlockGUIPermission") + " ]");
-        }
 
         return true;
     }

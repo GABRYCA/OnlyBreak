@@ -34,7 +34,7 @@ public class Main extends JavaPlugin {
         System.out.println(ChatColor.RED + "[OnlyBreak] Plugin disabled with success.");
     }
 
-    public static FileConfiguration getMessages(){
+    static FileConfiguration getMessages(){
         MessagesYML messages = new MessagesYML();
         return messages.getFile();
     }
