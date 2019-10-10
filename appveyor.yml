@@ -1,0 +1,27 @@
+version: "{branch} {build}"
+
+build:
+  verbosity: detailed
+
+build_script:
+  - gradlew.bat build
+
+cache:
+  - C:\Users\appveyor\.gradle
+
+artifacts:
+  - path: prison-spigot\build\libs\Prison.jar
+
+environment:
+  matrix:
+  - JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+
+matrix:
+  fast_finish: true
+  
+on_success:
+  - ps: Invoke-RestMethod https://raw.githubusercontent.com/DiscordHooks/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+  - ps: ./send.ps1 success $env:WEBHOOK_URL
+on_failure:
+  - ps: Invoke-RestMethod https://raw.githubusercontent.com/DiscordHooks/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+  - ps: ./send.ps1 failure $env:WEBHOOK_URL
