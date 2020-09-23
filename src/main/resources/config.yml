@@ -1,0 +1,7 @@
+Permissions:
+  addBlockPermission: "obreak.add"
+  deleteBlockPermission: "obreak.delete"
+  editBlockPermission: "obreak.edit"
+  defaultBreakBlockFormat: "obreak.break."
+
+blocks:

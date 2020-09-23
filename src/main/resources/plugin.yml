@@ -1,0 +1,12 @@
+name: OnlyBreak
+version: @version@
+main: it.gabryca.onlybreak.OnlyBreak
+api-version: 1.13
+prefix: OnlyBreak
+authors: [ GABRYCA ]
+description: Add a permission to break blocks
+website: gabryca.jar-mc.com
+commands:
+  OBreak:
+    description: Show a list of commands and sub-commands
+    usage: /<command>
