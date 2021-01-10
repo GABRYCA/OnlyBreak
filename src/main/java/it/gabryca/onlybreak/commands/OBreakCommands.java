@@ -128,6 +128,7 @@ public class OBreakCommands implements CommandExecutor {
         sender.sendMessage(OnlyBreak.format("&3&b - &3 /obreak delete <Block_Name - ID>"));
         sender.sendMessage(OnlyBreak.format("&3&b - &3 /obreak edit <Block_Name - ID> <New Permission>"));
         sender.sendMessage(OnlyBreak.format("&3&b - &3 /obreak GUI -> Open the GUI"));
+        sender.sendMessage(OnlyBreak.format("&3&b - &3 /obreak disabled-worlds add/remove <worldName>"));
         return true;
     }
 }
