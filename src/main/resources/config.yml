@@ -3,5 +3,7 @@ Permissions:
   deleteBlockPermission: "obreak.delete"
   editBlockPermission: "obreak.edit"
   defaultBreakBlockFormat: "obreak.break."
+  addDisabledWorld: "obreak.disableWorld"
+  removeDisabledWorld: "obreak.disableWorld"
 
 blocks:

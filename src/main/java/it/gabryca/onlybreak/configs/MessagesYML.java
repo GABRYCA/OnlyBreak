@@ -60,12 +60,17 @@ public class MessagesYML {
     }
 
     private void values(){
-        dataConfig("Messages.warn-perm", "&cSorry but you don't have the permission to use that!");
+        dataConfig("Messages.warn-perm", "&cSorry, you don't have the right permission!");
         dataConfig("Messages.warn-perm-block", "&cSorry, you can't break this block!");
         dataConfig("Messages.warn-notMaterial", "&cSorry but that block-material doesn't exists!");
         dataConfig("Messages.command-success-block", "&aBlock added with success!");
         dataConfig("Messages.command-success-block", "&aBlock edited with success!");
         dataConfig("Messages.Block_Not_Found", "&cBlock not found in the config!");
+        dataConfig("Message.Disabled_World_Add_Success", "&aDisabled-World added with success!");
+        dataConfig("Message.Disabled_World_Remove_Success", "&aDisabled-World removed with success!");
+        dataConfig("Message.Disabled_World_Remove_Not_Found", "&cWorld not found in the Config! (Wrong name?)");
+        dataConfig("Message.Disabled_World_Missing_Name", "&cYou're missing the world name!");
+        dataConfig("Message.Disabled_World_Invalid_Args", "&cInvalid argument!");
         dataConfig("Messages.Missing_Block_Name", "&cPlease write a blockName!");
         dataConfig("Messages.Success_Block_Delete", "&aBlock deleted with success.");
         dataConfig("Messages.Wrong_Format_Add", "&cWrong format, use something like this: /obreak add COAL_ORE obreak.break.COAL_ORE .");

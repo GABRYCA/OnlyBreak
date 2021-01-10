@@ -119,4 +119,38 @@ public class OnlyBreakUtil {
         return false;
     }
 
+    public void addDisabledWorld(CommandSender sender, String worldName){
+
+        Configuration config = OnlyBreak.getInstance().getConfig();
+        Configuration message = OnlyBreak.getMessages();
+
+        if (!sender.hasPermission(config.getString("Permissions.addDisabledWorld"))){
+            sender.sendMessage(OnlyBreak.format(message.getString("Messages.warn-perm") + "[" + config.getString("Permissions.addDisabledWorld") + "]"));
+            return;
+        }
+
+        config.set("disabled-worlds." + worldName + ".name", worldName);
+        OnlyBreak.getInstance().saveConfig();
+        sender.sendMessage(OnlyBreak.format(message.getString("Message.Disabled_World_Add_Success")) + "[" + worldName + "]");
+    }
+
+    public void removeDisabledWorld(CommandSender sender, String worldName){
+
+        Configuration config = OnlyBreak.getInstance().getConfig();
+        Configuration message = OnlyBreak.getMessages();
+
+        if (!sender.hasPermission(config.getString("Permissions.removeDisabledWorld"))){
+            sender.sendMessage(OnlyBreak.format(message.getString("Messages.warn-perm") + "[" + config.getString("Permissions.removeDisabledWorld") + "]"));
+            return;
+        }
+
+        if (!config.getString("disabled-worlds." + worldName + ".name").equalsIgnoreCase(worldName)){
+            sender.sendMessage(OnlyBreak.format(message.getString("Message.Disabled_World_Remove_Not_Found")));
+            return;
+        }
+
+        config.set("disabled-worlds." + worldName + ".name", null);
+        OnlyBreak.getInstance().saveConfig();
+        sender.sendMessage(OnlyBreak.format(message.getString("Message.Disabled_World_Remove_Success")) + "[" + worldName + "]");
+    }
 }

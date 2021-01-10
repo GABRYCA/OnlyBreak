@@ -23,15 +23,16 @@ public class OBreakCommands implements CommandExecutor {
 
             return commandList(sender);
 
-        } else if (args[0].equalsIgnoreCase("add")){
+        } else if (args[0].equalsIgnoreCase("add")) {
 
             String permission = null;
 
-            if (args.length == 1){
+            if (args.length == 1) {
 
                 sender.sendMessage(OnlyBreak.format(message.getString("Messages.Wrong_Format_Add")));
+                return true;
 
-            } else if (args.length == 3){
+            } else if (args.length == 3) {
 
                 permission = args[2];
 
@@ -39,11 +40,44 @@ public class OBreakCommands implements CommandExecutor {
 
             OnlyBreakUtil.get().addBlock(args[1], Optional.ofNullable(permission), sender);
 
+        } else if (args[0].equalsIgnoreCase("disabled-worlds")){
+
+            if (args.length == 1){
+                sender.sendMessage(OnlyBreak.format("&7&bSubCommands:"));
+                sender.sendMessage(OnlyBreak.format("&3&b - &3 /obreak disabled-worlds add <worldName>"));
+                sender.sendMessage(OnlyBreak.format("&3&b - &3 /obreak disabled-worlds remove <worldName>"));
+                return true;
+            }
+
+            if (args.length == 2){
+                if (args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove")) {
+                    sender.sendMessage(OnlyBreak.format(message.getString("Message.Disabled_World_Missing_Name")));
+                    return true;
+                }
+                sender.sendMessage(OnlyBreak.format(message.getString("Message.Disabled_World_Invalid_Args")) + "[" + args[1] + "]");
+                return true;
+            }
+
+            if (args.length == 3){
+                if (args[1].equalsIgnoreCase("add")){
+
+                    OnlyBreakUtil.get().addDisabledWorld(sender, args[2]);
+
+                } else if (args[1].equalsIgnoreCase("remove")){
+
+                    OnlyBreakUtil.get().removeDisabledWorld(sender, args[2]);
+
+                } else {
+                    sender.sendMessage(OnlyBreak.format(message.getString("Message.Disabled_World_Invalid_Args")) + "[" + args[1] + "]");
+                }
+            }
+
         } else if (args[0].equalsIgnoreCase("delete")){
 
             if (args.length == 1){
 
                 sender.sendMessage(OnlyBreak.format(message.getString("Messages.Wrong_Format_Delete")));
+                return true;
 
             }
 
@@ -68,6 +102,7 @@ public class OBreakCommands implements CommandExecutor {
             if (args.length == 1){
 
                 sender.sendMessage(OnlyBreak.format(message.getString("Messages.Wrong_Format_Edit")));
+                return true;
 
             } else if (args.length == 3){
 

@@ -18,8 +18,22 @@ import java.util.List;
 
 public class OnBreakAndListeners implements Listener {
 
+    private boolean isDisabledWorld(BlockBreakEvent e){
+
+        String worldName = e.getBlock().getWorld().getName();
+        Configuration config = OnlyBreak.getInstance().getConfig();
+
+        if (config.getString("disabled-worlds." + worldName + ".name") != null){
+            return config.getString("disabled-worlds." + worldName + ".name").equalsIgnoreCase(worldName);
+        }
+
+        return false;
+    }
+
     @EventHandler
     public void OnBreak2(BlockBreakEvent e) {
+
+        if (isDisabledWorld(e)) return;
 
         Material block = e.getBlock().getType();
         Configuration config = OnlyBreak.getInstance().getConfig();
